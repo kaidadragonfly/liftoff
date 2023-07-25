@@ -58,4 +58,58 @@ defmodule Liftoff.WorkoutsTest do
       assert %Ecto.Changeset{} = Workouts.change_exercise(exercise)
     end
   end
+
+  describe "log" do
+    alias Liftoff.Workouts.Log
+
+    import Liftoff.WorkoutsFixtures
+
+    @invalid_attrs %{date: nil}
+
+    test "list_log/0 returns all log" do
+      log = log_fixture()
+      assert Workouts.list_log() == [log]
+    end
+
+    test "get_log!/1 returns the log with given id" do
+      log = log_fixture()
+      assert Workouts.get_log!(log.id) == log
+    end
+
+    test "create_log/1 with valid data creates a log" do
+      valid_attrs = %{date: ~D[2023-07-23]}
+
+      assert {:ok, %Log{} = log} = Workouts.create_log(valid_attrs)
+      assert log.date == ~D[2023-07-23]
+    end
+
+    test "create_log/1 with invalid data returns error changeset" do
+      assert {:error, %Ecto.Changeset{}} = Workouts.create_log(@invalid_attrs)
+    end
+
+    test "update_log/2 with valid data updates the log" do
+      log = log_fixture()
+      update_attrs = %{date: ~D[2023-07-24]}
+
+      assert {:ok, %Log{} = log} = Workouts.update_log(log, update_attrs)
+      assert log.date == ~D[2023-07-24]
+    end
+
+    test "update_log/2 with invalid data returns error changeset" do
+      log = log_fixture()
+      assert {:error, %Ecto.Changeset{}} = Workouts.update_log(log, @invalid_attrs)
+      assert log == Workouts.get_log!(log.id)
+    end
+
+    test "delete_log/1 deletes the log" do
+      log = log_fixture()
+      assert {:ok, %Log{}} = Workouts.delete_log(log)
+      assert_raise Ecto.NoResultsError, fn -> Workouts.get_log!(log.id) end
+    end
+
+    test "change_log/1 returns a log changeset" do
+      log = log_fixture()
+      assert %Ecto.Changeset{} = Workouts.change_log(log)
+    end
+  end
 end

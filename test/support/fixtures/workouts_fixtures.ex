@@ -18,4 +18,18 @@ defmodule Liftoff.WorkoutsFixtures do
 
     exercise
   end
+
+  @doc """
+  Generate a log.
+  """
+  def log_fixture(attrs \\ %{}) do
+    {:ok, log} =
+      attrs
+      |> Enum.into(%{
+        date: ~D[2023-07-23]
+      })
+      |> Liftoff.Workouts.create_log()
+
+    log
+  end
 end

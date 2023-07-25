@@ -10,10 +10,44 @@
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.
 
-Liftoff.Repo.insert!(%Liftoff.Workouts.Exercise{name: "Squat", day: :a})
-Liftoff.Repo.insert!(%Liftoff.Workouts.Exercise{name: "Bench/Floor Press", day: :a})
-Liftoff.Repo.insert!(%Liftoff.Workouts.Exercise{name: "Row", day: :a})
+alias Liftoff.Repo
+alias Liftoff.Workouts.Exercise
 
-Liftoff.Repo.insert!(%Liftoff.Workouts.Exercise{name: "Deadlift", day: :b})
-Liftoff.Repo.insert!(%Liftoff.Workouts.Exercise{name: "Overhead Press", day: :b})
-Liftoff.Repo.insert!(%Liftoff.Workouts.Exercise{name: "Lat Pulldown", day: :b})
+# Day A
+Repo.insert!(
+  %Exercise{name: "Squat", day: :a, step: 5.0},
+  on_conflict: [set: [day: :a, step: 5.0]],
+  conflict_target: :name
+)
+
+Repo.insert!(
+  %Exercise{name: "Bench/Floor Press", day: :a, step: 2.5},
+  on_conflict: [set: [day: :a, step: 2.5]],
+  conflict_target: :name
+)
+
+Repo.insert!(
+  %Exercise{name: "Row", day: :a, step: 2.5},
+  on_conflict: [set: [day: :a, step: 2.5]],
+  conflict_target: :name
+)
+
+# Day B
+
+Repo.insert!(
+  %Exercise{name: "Deadlift", day: :b, step: 5.0},
+  on_conflict: [set: [day: :b, step: 5.0]],
+  conflict_target: :name
+)
+
+Repo.insert!(
+  %Exercise{name: "Overhead Press", day: :b, step: 2.5},
+  on_conflict: [set: [day: :b, step: 2.5]],
+  conflict_target: :name
+)
+
+Repo.insert!(
+  %Exercise{name: "Lat Pulldown", day: :b, step: 2.5},
+  on_conflict: [set: [day: :b, step: 2.5]],
+  conflict_target: :name
+)
