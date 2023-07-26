@@ -2,9 +2,11 @@ defmodule Liftoff.Workouts.Log do
   use Ecto.Schema
   import Ecto.Changeset
 
+  alias Liftoff.Workouts.Exercise
+
   schema "log" do
     field :date, :date
-    field :exercise, :id
+    belongs_to :exercise, Exercise
     field :weight, :float
 
     timestamps()
