@@ -15,39 +15,39 @@ alias Liftoff.Workouts.Exercise
 
 # Day A
 Repo.insert!(
-  %Exercise{name: "Squat", day: :a, step: 5.0},
-  on_conflict: [set: [day: :a, step: 5.0]],
+  %Exercise{name: "Squat", day: :a, step: 5.0, sets: 5, reps: 5},
+  on_conflict: :replace_all,
   conflict_target: :name
 )
 
 Repo.insert!(
-  %Exercise{name: "Bench/Floor Press", day: :a, step: 2.5},
-  on_conflict: [set: [day: :a, step: 2.5]],
+  %Exercise{name: "Bench/Floor Press", day: :a, step: 2.5, sets: 5, reps: 5},
+  on_conflict: :replace_all,
   conflict_target: :name
 )
 
 Repo.insert!(
-  %Exercise{name: "Row", day: :a, step: 2.5},
-  on_conflict: [set: [day: :a, step: 2.5]],
+  %Exercise{name: "Row", day: :a, step: 2.5, sets: 3, reps: 8},
+  on_conflict: :replace_all,
   conflict_target: :name
 )
 
 # Day B
 
 Repo.insert!(
-  %Exercise{name: "Deadlift", day: :b, step: 5.0},
-  on_conflict: [set: [day: :b, step: 5.0]],
+  %Exercise{name: "Deadlift", day: :b, step: 5.0, sets: 5, reps: 5},
+  on_conflict: :replace_all,
   conflict_target: :name
 )
 
 Repo.insert!(
-  %Exercise{name: "Overhead Press", day: :b, step: 2.5},
-  on_conflict: [set: [day: :b, step: 2.5]],
+  %Exercise{name: "Overhead Press", day: :b, step: 2.5, sets: 3, reps: 5},
+  on_conflict: :replace_all,
   conflict_target: :name
 )
 
 Repo.insert!(
-  %Exercise{name: "Lat Pulldown", day: :b, step: 2.5},
-  on_conflict: [set: [day: :b, step: 2.5]],
+  %Exercise{name: "Lat Pulldown", day: :b, step: 2.5, sets: 3, reps: 8},
+  on_conflict: :replace_all,
   conflict_target: :name
 )

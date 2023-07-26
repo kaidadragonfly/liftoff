@@ -6,6 +6,8 @@ defmodule Liftoff.Workouts.Exercise do
     field :day, Ecto.Enum, values: [:a, :b]
     field :name, :string
     field :step, :float
+    field :reps, :integer
+    field :sets, :integer
 
     timestamps()
   end
@@ -14,7 +16,7 @@ defmodule Liftoff.Workouts.Exercise do
   def changeset(exercise, attrs) do
     exercise
     |> unique_constraint(:name)
-    |> cast(attrs, [:name, :day, :step])
-    |> validate_required([:name, :day, :step])
+    |> cast(attrs, [:name, :day, :step, :reps, :sets])
+    |> validate_required([:name, :day, :step, :reps, :sets])
   end
 end
