@@ -14,7 +14,7 @@ defmodule Liftoff.Workouts.Exercise do
   def changeset(exercise, attrs) do
     exercise
     |> unique_constraint(:name)
-    |> cast(attrs, [:name, :day])
-    |> validate_required([:name, :day])
+    |> cast(attrs, [:name, :day, :step])
+    |> validate_required([:name, :day, :step])
   end
 end

@@ -5,6 +5,7 @@ defmodule Liftoff.Workouts.Log do
   schema "log" do
     field :date, :date
     field :exercise, :id
+    field :weight, :float
 
     timestamps()
   end
@@ -12,7 +13,7 @@ defmodule Liftoff.Workouts.Log do
   @doc false
   def changeset(log, attrs) do
     log
-    |> cast(attrs, [:date])
-    |> validate_required([:date])
+    |> cast(attrs, [:date, :exercise, :weight])
+    |> validate_required([:date, :exercise, :weight])
   end
 end
