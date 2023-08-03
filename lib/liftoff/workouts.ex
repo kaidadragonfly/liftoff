@@ -109,11 +109,11 @@ defmodule Liftoff.Workouts do
 
   ## Examples
 
-      iex> list_log()
+      iex> list_logs()
       [%Log{}, ...]
 
   """
-  def list_log do
+  def list_logs do
     Repo.all(Log)
   end
 

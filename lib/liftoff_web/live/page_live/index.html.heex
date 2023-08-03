@@ -1,0 +1,12 @@
+<.header>
+  Listing Users
+</.header>
+
+<%= for user <- @users do %>
+  <%= user.name %>
+<% end %>
+
+<.table id="dashboard" rows={@logs}>
+  <:col :let={log} label="Exercise Name"><%= log.exercise.name %></:col>
+  <:col :let={log} label="Weight"><%= log.weight %></:col>
+</.table>

@@ -8,8 +8,6 @@ defmodule Liftoff.Workouts.Log do
     field :date, :date
     belongs_to :exercise, Exercise
     field :weight, :float
-
-    timestamps()
   end
 
   @doc false

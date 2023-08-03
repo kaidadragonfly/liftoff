@@ -8,6 +8,7 @@ defmodule Liftoff.Workouts.Exercise do
     field :step, :float
     field :reps, :integer
     field :sets, :integer
+    field :weights, {:array, :float}
 
     timestamps()
   end

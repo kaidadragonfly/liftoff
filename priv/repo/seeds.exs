@@ -15,39 +15,81 @@ alias Liftoff.Workouts.Exercise
 
 # Day A
 Repo.insert!(
-  %Exercise{name: "Squat", day: :a, step: 5.0, sets: 5, reps: 5},
-  on_conflict: :replace_all,
+  %Exercise{
+    name: "Squat",
+    day: :a,
+    step: 5.0,
+    sets: 5,
+    reps: 5,
+    weights: [2.5, 2.5, 2.5, 10.0, 20.0, 20.0, 20.0, 20.0]
+  },
+  on_conflict: {:replace, [:name, :day, :step, :sets, :reps, :weights]},
   conflict_target: :name
 )
 
 Repo.insert!(
-  %Exercise{name: "Bench/Floor Press", day: :a, step: 2.5, sets: 5, reps: 5},
-  on_conflict: :replace_all,
+  %Exercise{
+    name: "Bench/Floor Press",
+    day: :a,
+    step: 2.5,
+    sets: 5,
+    reps: 5,
+    weights: [2.5, 2.5, 2.5, 10.0, 20.0, 20.0, 20.0, 20.0]
+  },
+  on_conflict: {:replace, [:name, :day, :step, :sets, :reps, :weights]},
   conflict_target: :name
 )
 
 Repo.insert!(
-  %Exercise{name: "Row", day: :a, step: 2.5, sets: 3, reps: 8},
-  on_conflict: :replace_all,
+  %Exercise{
+    name: "Row",
+    day: :a,
+    step: 2.5,
+    sets: 3,
+    reps: 8,
+    weights: [2.5, 2.5, 2.5, 10.0, 20.0, 20.0, 20.0, 20.0]
+  },
+  on_conflict: {:replace, [:name, :day, :step, :sets, :reps, :weights]},
   conflict_target: :name
 )
 
 # Day B
 
 Repo.insert!(
-  %Exercise{name: "Deadlift", day: :b, step: 5.0, sets: 5, reps: 5},
-  on_conflict: :replace_all,
+  %Exercise{
+    name: "Deadlift",
+    day: :b,
+    step: 5.0,
+    sets: 5,
+    reps: 5,
+    weights: [2.5, 2.5, 2.5, 10.0, 20.0, 20.0, 20.0, 20.0]
+  },
+  on_conflict: {:replace, [:name, :day, :step, :sets, :reps, :weights]},
   conflict_target: :name
 )
 
 Repo.insert!(
-  %Exercise{name: "Overhead Press", day: :b, step: 2.5, sets: 3, reps: 5},
-  on_conflict: :replace_all,
+  %Exercise{
+    name: "Overhead Press",
+    day: :b,
+    step: 2.5,
+    sets: 3,
+    reps: 5,
+    weights: [2.5, 2.5, 2.5, 10.0, 20.0, 20.0, 20.0, 20.0]
+  },
+  on_conflict: {:replace, [:name, :day, :step, :sets, :reps, :weights]},
   conflict_target: :name
 )
 
 Repo.insert!(
-  %Exercise{name: "Lat Pulldown", day: :b, step: 2.5, sets: 3, reps: 8},
-  on_conflict: :replace_all,
+  %Exercise{
+    name: "Lat Pulldown",
+    day: :b,
+    step: 2.5,
+    sets: 3,
+    reps: 8,
+    weights: [3.0, 5.0, 8.0, 13.0, 19.0, 23.0, 30.0]
+  },
+  on_conflict: {:replace, [:name, :day, :step, :sets, :reps, :weights]},
   conflict_target: :name
 )
