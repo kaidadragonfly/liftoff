@@ -114,7 +114,7 @@ defmodule Liftoff.Workouts do
 
   """
   def list_logs do
-    Repo.all(Log)
+    Repo.all(from l in Log, order_by: l.date)
   end
 
   @doc """

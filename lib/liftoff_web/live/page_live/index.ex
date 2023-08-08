@@ -11,7 +11,12 @@ defmodule LiftoffWeb.PageLive.Index do
       :ok,
       socket
       |> assign(:users, Accounts.list_users())
-      |> assign(:logs, Workouts.list_logs() |> Repo.preload(:exercise))
+      |> assign(
+        :logs,
+        Workouts.list_logs()
+        |> Repo.preload(:exercise)
+        |> Repo.preload(:user)
+      )
     }
   end
 
