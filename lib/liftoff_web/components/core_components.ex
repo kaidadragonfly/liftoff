@@ -453,7 +453,7 @@ defmodule LiftoffWeb.CoreComponents do
         </thead>
         <tbody id={@id} phx-update={match?(%Phoenix.LiveView.LiveStream{}, @rows) && "stream"}>
           <tr :for={row <- @rows} id={@row_id && @row_id.(row)}>
-            <td :for={{col, i} <- Enum.with_index(@col)} phx-click={@row_click && @row_click.(row)}>
+            <td :for={col <- @col}>
               <div class="block py-4 pr-6">
                 <span>
                   <%= render_slot(col, @row_item.(row)) %>
