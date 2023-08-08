@@ -93,3 +93,29 @@ Repo.insert!(
   on_conflict: {:replace, [:name, :day, :step, :sets, :reps, :weights]},
   conflict_target: :name
 )
+
+alias Liftoff.Workouts
+alias Liftoff.Accounts
+
+logs_without_users =
+  Workouts.list_logs()
+  |> Repo.preload(:user)
+  |> Repo.preload(:exercise)
+  |> Enum.filter(fn log -> is_nil(log.user) end)
+
+Accounts.list_users()
+|> Enum.each(fn user ->
+  logs_without_users
+  |> Enum.each(fn log ->
+    {:ok, _} =
+      Workouts.create_log(%{
+        user: user,
+        exercise: log.exercise,
+        date: log.date,
+        weight: log.weight
+      })
+  end)
+end)
+
+logs_without_users
+|> Enum.each(fn log -> Workouts.delete_log(log) end)
